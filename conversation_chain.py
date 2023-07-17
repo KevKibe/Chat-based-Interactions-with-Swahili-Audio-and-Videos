@@ -15,11 +15,11 @@ class ConversationChain:
         )
         self.extracted_trans_string = " ".join(self.translated_text)
         self.text_chunks = self.text_splitter.split_text(self.extracted_trans_string)
-        self.embeddings = OpenAIEmbeddings(openai_api_key= "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")
+        self.embeddings = OpenAIEmbeddings(openai_api_key= "")
         self.vectorstore = FAISS.from_texts(texts=self.text_chunks, embedding=self.embeddings)
         self.conversation_chain = ConversationalRetrievalChain.from_llm(
             llm=ChatOpenAI(
-                openai_api_key= "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",
+                openai_api_key= "",
                 model_name="gpt-3.5-turbo",
                 temperature=0
             ),
