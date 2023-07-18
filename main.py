@@ -1,21 +1,32 @@
 from get_audio import YouTubeAudioDownloader
-from transcribe import AudioTranscription
-from transcribe import TextTranslator
+from transcribe_translate import AudioTranscription
+from transcribe_translate import TextTranslator
 from conversation_chain import ConversationChain
 import whisper
-whisp_model = whisper.load_model("base")
 
-url = "https://youtu.be/graduE4S9Og?t=439"
-downloader = YouTubeAudioDownloader(url)
-downloader.download_audio()
+class MyApp:
+    def __init__(self):
+        self.whisp_model = whisper.load_model("base")
+        self.url = ""
 
-audio_file = "/kaggle/working/audio2.mp3"
-model = AudioTranscription(whisp_model)
-transcription= model.transcribe_audio(audio_file)
+    def get_user_input(self):
+        self.url = input("Enter the YouTube URL: ")
 
-translator = TextTranslator()
-translated_text= translator.translate_text(transcription, dest='en')
+    def run(self):
+        downloader = YouTubeAudioDownloader(self.url)
+        downloader.download_audio()
+        
+        audio_file = "audio.mp3"
+        model = AudioTranscription(self.whisp_model)
+        transcription = model.transcribe_audio(audio_file)
+        
+        translator = TextTranslator()
+        translated_text = translator.translate_text(transcription, dest='en')
+        
+        conversation = ConversationChain(translated_text)
+        conversation.run_docbot()
 
-translated_text = translated_text
-conversation = ConversationChain(translated_text)
-conversation.run_docbot()
+if __name__ == "__main__":
+    app = MyApp()
+    app.get_user_input()
+    app.run()

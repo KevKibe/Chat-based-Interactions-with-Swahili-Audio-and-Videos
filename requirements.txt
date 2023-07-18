@@ -1,6 +1,5 @@
 whisper
 pytube
-ffmpeg
 googletrans==3.1.0a0
 langchain
 openai
