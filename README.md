@@ -8,12 +8,12 @@ This is an application that enables a chat-based conversation in English with Sw
 The application also works for other [languages](https://platform.openai.com/docs/guides/speech-to-text/supported-languages) but I am farmiliar with Swahili hence why I picked the language.
 
 ## Limitations
-- Takes a while to transcribe Swahili audio files to text specifically 2mins for a 9min audiofile and 13mins for a 46min audiofile as shown in the noteboook.
+- Takes a while to transcribe Swahili audio files to text specifically 2mins for a 9min audiofile and 13mins for a 46min audiofile as shown in the [notebook](https://github.com/KevKibe/Querying-Transcribed-Text/blob/main/yt_audio_to_chat_swahili.ipynb).
 - Google Translate API for translation is not that accurate.
 - OpenAI API has a token and request limit and for free trial users. It would be better to use a paid account.
 
 ## Usage
-You can clone this repository and follow these steps or use a notebook as demonstrated here. 
+You can clone this repository and follow these steps or use a [notebook](https://github.com/KevKibe/Querying-Transcribed-Text/blob/main/yt_audio_to_chat_swahili.ipynb) as demonstrated here. 
 - Ensure you have Python installed on your machine (version 3.6 or higher).
 - Install the required dependencies by running the following command: `pip install -r requirements.txt`
 - Run this  command in your terminal `pip install git+https://github.com/openai/whisper.git ` to get whisper by OpenAI
