@@ -24,7 +24,7 @@ class MyApp:
         translated_text = translator.translate_text(transcription, dest='en')
         
         conversation = ConversationChain(translated_text)
-        conversation.run_docbot()
+        conversation.run_chat()
 
 if __name__ == "__main__":
     app = MyApp()

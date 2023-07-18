@@ -30,7 +30,7 @@ class ConversationChain:
 
         self.chat_history = []
 
-    def run_docbot(self, translated_text):
+    def run_chat(self, translated_text):
         conversation = ConversationChain(translated_text)
 
         print("---------------------------------------------------------------------------------")
