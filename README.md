@@ -26,3 +26,5 @@ You can clone this repository and follow these steps or use a [notebook](https:/
   `OPENAI_API_KEY=your_api_key_here`
 - Run the app by running the command `python main.py` in your terminal which will prompt you with the youtube URL input and then proceed to ask for a prompt.
 - The application will transcribe the Swahili audio, translate it to English, and engage in a chat-based conversation based on your prompt.
+
+**:zap: I'm currently open for roles in Data Science, Machine Learning, NLP and Computer Vision.**
