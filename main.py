@@ -8,9 +8,11 @@ class MyApp:
     def __init__(self):
         self.whisp_model = whisper.load_model("base")
         self.url = ""
+        self.apikey = ""
 
     def get_user_input(self):
         self.url = input("Enter the YouTube URL: ")
+        self.apikey = input("Enter OpenAI API Key")
 
     def run(self):
         downloader = YouTubeAudioDownloader(self.url)
@@ -23,7 +25,7 @@ class MyApp:
         translator = TextTranslator()
         translated_text = translator.translate_text(transcription, dest='en')
         
-        conversation = ConversationChain(translated_text)
+        conversation = ConversationChain(translated_text, self.apikey)
         conversation.run_chat()
 
 if __name__ == "__main__":

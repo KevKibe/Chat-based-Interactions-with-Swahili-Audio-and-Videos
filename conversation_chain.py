@@ -1,14 +1,12 @@
 import sys
-import os
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import FAISS
 from langchain.chains import ConversationalRetrievalChain
 from langchain.chat_models import ChatOpenAI
 
-
 class ConversationChain:
-    def __init__(self, translated_text):
+    def __init__(self, translated_text, api_key):
         self.translated_text = translated_text
         self.text_splitter = CharacterTextSplitter(separator="\n",
             chunk_size=1000,
@@ -21,7 +19,7 @@ class ConversationChain:
         self.vectorstore = FAISS.from_texts(texts=self.text_chunks, embedding=self.embeddings)
         self.conversation_chain = ConversationalRetrievalChain.from_llm(
             llm=ChatOpenAI(
-                api_key= os.getenv('OPENAI_API_KEY'),
+                api_key=api_key,
                 model_name="gpt-3.5-turbo",
                 temperature=0
             ),
@@ -30,9 +28,7 @@ class ConversationChain:
 
         self.chat_history = []
 
-    def run_chat(self, translated_text):
-        conversation = ConversationChain(translated_text)
-
+    def run_chat(self):
         print("---------------------------------------------------------------------------------")
         print(' chatbox ')
         print('---------------------------------------------------------------------------------')
@@ -47,8 +43,6 @@ class ConversationChain:
             if query == '':
                 continue
 
-            result = conversation.conversation_chain({"question": query, "chat_history": conversation.chat_history})
+            result = self.conversation_chain({"question": query, "chat_history": self.chat_history})
             print("Answer: " + result["answer"])
-            conversation.chat_history.append((query, result["answer"]))
-
-
+            self.chat_history.append((query, result["answer"]))
