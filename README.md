@@ -27,4 +27,38 @@ You can clone this repository and follow these steps or use a [notebook](https:/
 - Run the app by running the command `python main.py` in your terminal which will prompt you with the youtube URL input and then proceed to ask for a prompt.
 - The application will transcribe the Swahili audio, translate it to English, and engage in a chat-based conversation based on your prompt.
 
+
+## Deploying and Containerizing Your Application with Docker
+
+Before you start, make sure you have [Docker](https://www.docker.com/get-started) installed on your system. 
+
+1. **Clone the Repository:** First, clone the repository for your application to your local machine or cloud instance using the following commands:
+   ```sh
+   git clone https://github.com/KevKibe/Chat-based-Interactions-with-Swahili-Audio-and-Videos.git
+   cd Chat-based-Interactions-with-Swahili-Audio-and-Videos
+2.**Build the Docker Image:** Replace your-app-name with a suitable name for your application.
+   ```
+   docker build -t your-app-name .
+
+ ```
+
+## To deploy on an AWS EC2 instance
+- Setup an EC2 instance and SSH to the instance.Use this as a [guide](https://www.machinelearningplus.com/deployment/deploy-ml-model-aws-ec2-instance/).
+- Run
+   ```
+  git clone https://github.com/KevKibe/Chat-based-Interactions-with-Swahili-Audio-and-Videos.git
+  ```
+- Start up [Docker](https://docs.docker.com) and run
+  ```
+  docker build -t dockerfile .
+  ```
+- run
+  ```
+  docker run -e PORT=8080 dockerfile
+  ```
+- You can now get predictions from
+  ```
+  http://<ec2-public-IP>:8080/predict
+  ```
+
 **:zap: I'm currently open for roles in Data Science, Machine Learning, NLP and Computer Vision.**
