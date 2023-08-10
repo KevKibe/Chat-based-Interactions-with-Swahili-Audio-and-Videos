@@ -1,0 +1,7 @@
+.venv
+.env
+.gitignore
+README.md
+test.py
+yt_audio_to_chat_swahili.ipynb
+streamlit_app.py
