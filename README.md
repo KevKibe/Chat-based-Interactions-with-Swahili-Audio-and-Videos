@@ -58,7 +58,7 @@ Before you start, make sure you have [Docker](https://www.docker.com/get-started
   ```
 - You can now get predictions from
   ```
-  http://<ec2-public-IP>:8080/predict
+  http://<ec2-public-IP>:8080/transcribe
   ```
 
 **:zap: I'm currently open for roles in Data Science, Machine Learning, NLP and Computer Vision.**
